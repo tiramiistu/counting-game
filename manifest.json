@@ -1,0 +1,17 @@
+{
+  "name": "Under the Sea Counting Game",
+  "short_name": "Counting Game",
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#0a0a0a",
+  "theme_color": "#790ECB",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

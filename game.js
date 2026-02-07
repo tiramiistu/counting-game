@@ -1,3 +1,8 @@
+// Register service worker for offline support
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const messageEl = document.getElementById('message');

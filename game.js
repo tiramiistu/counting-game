@@ -45,6 +45,7 @@ let bubbles = [];
 let boats = [];
 let waveOffset = 0;
 let totalScore = 0;
+let highScore = parseInt(localStorage.getItem('highScore')) || 0;
 let roundTimeLimit = 15000; // 15 seconds in milliseconds
 let roundEnded = false;
 let lives = 3;
@@ -580,6 +581,8 @@ function drawScoreAndTimer() {
     ctx.textAlign = 'left';
     ctx.fillStyle = colors.white;
     ctx.fillText('Score: ' + totalScore, 10, canvas.height - 20);
+    ctx.fillStyle = colors.prey300;
+    ctx.fillText('Best: ' + highScore, 180, canvas.height - 20);
     
     // Draw lives (hearts)
     ctx.font = '24px Arial';
@@ -605,6 +608,10 @@ function drawScoreAndTimer() {
         
         if (lives <= 0) {
             gameOver = true;
+            if (totalScore > highScore) {
+                highScore = totalScore;
+                localStorage.setItem('highScore', highScore);
+            }
             showMessage('Game Over! Final Score: ' + totalScore);
         } else {
             showMessage('Time\'s up! Lives left: ' + lives);
@@ -818,10 +825,13 @@ function drawGameOverScreen() {
     ctx.font = 'bold 32px Arial';
     ctx.fillStyle = colors.white;
     ctx.fillText('Final Score: ' + totalScore, canvas.width / 2, canvas.height / 2);
-    
+
     ctx.font = '24px Arial';
+    ctx.fillStyle = colors.purple300;
+    ctx.fillText('Best: ' + highScore, canvas.width / 2, canvas.height / 2 + 40);
+
     ctx.fillStyle = colors.prey300;
-    ctx.fillText('Press SPACE or tap to play again', canvas.width / 2, canvas.height / 2 + 60);
+    ctx.fillText('Press SPACE or tap to play again', canvas.width / 2, canvas.height / 2 + 80);
 }
 
 // Start game

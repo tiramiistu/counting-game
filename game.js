@@ -660,7 +660,7 @@ function newRound() {
             x: Math.random() * (canvas.width - 100) + 50,
             y: Math.random() * (canvas.height - 220) + 120,
             bobOffset: Math.random() * Math.PI * 2,
-            bobSpeed: Math.random() * 0.02 + 0.01
+            bobSpeed: Math.random() * 0.005 + 0.003
         });
     }
 }
@@ -779,7 +779,7 @@ function gameLoop() {
     if (!gameOver) {
         // Draw items with bobbing animation
         items.forEach((item, index) => {
-            const bobY = Math.sin(Date.now() * item.bobSpeed + item.bobOffset) * 10;
+            const bobY = Math.sin(Date.now() * item.bobSpeed + item.bobOffset) * 4;
             drawCreature(item.x, item.y + bobY, currentCreature);
         });
         
